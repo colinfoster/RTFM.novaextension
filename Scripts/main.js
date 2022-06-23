@@ -62,7 +62,7 @@ function handle_search( editor )
 	
 	Passed:
 	- the URL template (with %@ and possibly %$ token placeholders),
-	- syntax name (e.g., 'Javascript', 'HTML'), and
+	- syntax id (e.g., 'javascript', 'html'), and
 	- the user's search_text,
 	it substitutes the search_text (and maybe syntax) into the URL, then opens the resulting
 	search_url in the user's default browser.
@@ -165,18 +165,18 @@ function get_syntax_profile( syntax )
 	// Remapping can happen only once (the prefs are set up such that all remaps are 'end points').
 	if( resource_id.slice( 0, 4 ) === 'use-' )
 	{
-		syntax        = resource_id.slice( 4 );	// string off 'use-'.
+		syntax        = resource_id.slice( 4 );	// strip off 'use-' from to get the syntax to use.
 		resource_id   = get_resource_id_from_prefs( syntax );
 	}
 	
-	var syntax_name = _l('_syntax.' + syntax );				// e.g., "Javascript"
+	var syntax_name = _l('_syntax.' + syntax );				// e.g., 'javascript' => "Javascript", 'text' => "Plain Text"
 	if( resource_id === '-' )
 		throw new Error( _l("_err.no_search_resource", syntax_name ) );
 	
 	var url_template  = get_url_template( syntax, resource_id );
 			
 	var resource_name = _l('_rsrc_name.' + resource_id );	// e.g., "Mozilla.org via Duck Duck Go redirect"
-	if( resource_id === 'custom' )
+	if( resource_id === 'custom')
 		resource_name += ' (' + url_template.split('/')[ 2 ] + ')';	// Tack on the domain of Custom URL.
 	
 	var syntax_profile =
@@ -211,7 +211,7 @@ function lookup_preset_url_template( syntax, resource_id )
 	url_template = _l( url_localization_key );
 	
 	// If localization failed / doesn't start http, throw an error.
-	if( !url_template || url_template.slice( 0, 4 ) !== 'http' )
+	if( !url_template || url_template.slice( 0, 4 ) !== 'http')
 		throw new Error("Unable to find valid preset url template.\n[" + syntax + "," + resource_id + "]");
 	
 	return url_template;
@@ -343,7 +343,7 @@ function nova_text_prompt( title, body, placeholder, callback )
 	*/
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 	
-	fn.error = function( reply )
+	fn.error = function()
 	{
 		rc_log( _l('_err.bad_notify_reply') );
 		nova_notify( _l('_err.error'), _l('_err.bad_notify_reply') );
@@ -367,7 +367,8 @@ function _l( key )
 {
 	var str = nova.localize( key );
 	
-	for( var i = 1; i < arguments.length; i++ )
+	// Arguments are replaced in reverse order so we replace %@11 (if it exists) before %@1.
+	for( var i = arguments.length - 1; i > 0; i-- )
 		str = str.replace('%@'+i, arguments[ i ] );
 	
 	return str;
@@ -399,9 +400,17 @@ function rc_type( o )
 
 function rc_log()
 {
-	rc_log.id++
+	rc_log.id++;
 	
-	console.log( "= " + rc_log.id + " =======================  " + caller + "()" );
+	var log_type_and_value= function( value, prefix )
+	{
+		console.log( prefix + rc_type( value ) + " (" + value.toString() + ")");
+	};
+	
+	try{ var caller_name = arguments.callee.caller.name ? arguments.callee.caller.name : 'anon'; }
+	catch( e ){ caller_name = 'unknown'; }
+	
+	console.log( "= " + rc_log.id + " =======================  " + caller_name + "()" );
 		
 	for( var i = 0; i < arguments.length; i++ )
 	{
@@ -412,31 +421,24 @@ function rc_log()
 		{
 			var keys = Object.keys( o );
 			if( !keys.length )
-				rc_log.log_line( type, o, "- " );
+				log_type_and_value( o, "- " );
 			else
 			{
-				keys.forEach( function( key, i )
+				console.log('{');
+				keys.forEach( function( key )
 				{
-					rc_log.log_line( rc_type( o[ key ] ), o[ key ], '   "' + key + '": ' );
+					log_type_and_value( o[ key ], '   "' + key + '": ' );
 				} );
+				console.log('}');
 			}
 		}
 		else if( type === 'error')
 			console.log( "X Line " + o.line + ":" + o.column + " " + o.message );
 		else
-			rc_log.log_line( type, o, "- " );
+			log_type_and_value( o, "- " );
 	}
-	
-	// console.log("\n");
 }
-
-rc_log.log_line = function( type, value, prefix )
-{
-	console.log( prefix + type + " (" + value.toString() + ")");
-};
-
 rc_log.id = 0;
-
 dbg = rc_log;
 
 // ---------------------------------------------------------------------------------------------- //

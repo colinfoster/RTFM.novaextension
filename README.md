@@ -42,18 +42,29 @@ looking for, but ymmv.
 
 #### Custom Language Resources
 
-You can also add up to 3 Custom URLs in the "Custom Language Resources" area. URLs should
-start with http or https, and should include the %@ token at the location where the search string
-should appear. URLs can also include the %$ token where you'd like to specify the document's current
-syntax.
+You can also add up to 3 Custom URLs in the "Custom Language Resources" area. This can be extremely
+useful if you need to target a particular library API. e.g., The Javascript settings include presets
+targeting the jQuery, HighCharts and Nova APIs.
+
+URLs should start with http or https, and should include the %@ token at the location where the
+search string should appear. URLs can also include the %$ token where you'd like to specify the
+document's current syntax (helpful if you'are targetting are website like Mozilla.org where they
+support many syntaxes).
 
 If the URL you enter works in your browser (except for replacing %@ and %$ tokens) it should work
 in RTFM.
 
-How to create a custom search url for a website is outside the scope of this manual so you'll
-need to RTFM about that somewhere else. :-)
+Precisely how to create a custom search url for a website is outside the scope of this manual so
+you'll need to RTFM about that somewhere else. :-) But if you want to target a specific website
+through a search engine like Duck Duck Go, the URL generally looks like the placeholder text:
 
-#### Why are you using these presets?
+   https://duckduckgo.com/?q=\\+site:EXAMPLE.COM+%$+%@
+
+where %$ is the syntax (if needed) and %@ will be whatever you select in your editor to search for.
+If you're using Duck Duck Go and want to trigger their "I'm Feeling Ducky" redirect-to-first-result
+feature, start the query with backslash \ . For Google you must include '&btnI' after the search term.
+
+#### Why are you using these particular presets?
 
 Tradeoffs. Some websites (php.net) do best when searched directly, some do better when searched
 through a search engine (HTML5Doctor), and some don't seem to support search at all (Vue).
