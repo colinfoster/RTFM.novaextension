@@ -7,6 +7,8 @@ corner of the editor window) and your preferred resource for that syntax (specif
 preferences). If no text is selected when RTFM is triggered (by menu or assigned hot-key),
 you will be prompted to enter a search string.
 
+![Manual Search Entry](https://ext.runcode.run/rtfm/readme/RTFM_manual_entry.png)
+
 RTFM includes settings for every syntax recognized by Nova, so even if you're working in
 plain-text you could still do a general web search on any string, or set up a Custom URL to search
 the API of whatever you might be working on / documenting.
@@ -19,10 +21,10 @@ or through search engines. If the search results aren't better when you're doing
 on the site itself, this extension can't improve those results. Not all sites well designed to
 be searched.
 
-Here's a [30s Video Demo](https://ext.runcode.run/rtfm/readme/RTFM_howto.mp4)
+Here's a [30s Video Demo](https://ext.runcode.run/rtfm/readme/RTFM_how_to.mp4)
 if you prefer to WTFM.
 
-![How to use RTFM in 3 steps](https://ext.runcode.run/rtfm/readme/RTFM_howto.png)
+![How to use RTFM in 3 steps](https://ext.runcode.run/rtfm/readme/RTFM_how_to.png)
 
 ## Usage
 
