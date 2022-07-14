@@ -29,19 +29,24 @@ function handle_search( editor )
 {
 	try
 	{
-		// Confirm we support the current syntax and obtain a human-friendly name.
-		// e.g., 'css' returns [id: 'css', name: "CSS", 'resource_name': "Mozilla.org via Duck Duck Go"]
+		// Retrieve details about the current syntax and its search target.
+		// e.g., 'css' returns [id: 'css', name: "CSS", 'resource_name': "Mozilla.org via Duck Duck Go", 'url_template': "https://..."]
 		var syntax      = get_syntax_profile( editor.document.syntax );
 		var search_text = editor.selectedText.trim();
 		
 		// If the user didn't have text highlighted in the editor, ask them for a string.
 		if( !search_text )
-		{	// Callback function for prompt is curried with the syntax-name and url_template so it can call do_search.
-			nova_text_prompt(
-				"RTFM: " + syntax['name'],
+		{
+			nova.workspace.showInputPalette(
 				_l('_prompt.search_string', syntax['resource_name'] ),
-				_l('_prompt.placeholder', syntax['name'] ),
-				( search_text ) => { do_search( syntax['url_template'], syntax['id'], search_text.trim() ); }
+				{'placeholder': _l('_prompt.placeholder', syntax['name'] ) },
+				( search_text ) =>
+				{
+					search_text = search_text.trim();
+					
+					if( search_text )
+						do_search( syntax['url_template'], syntax['id'], search_text );
+				}
 			);
 			
 			return;
@@ -282,71 +287,6 @@ function nova_notify( title, body, duration )
 		clearTimeout( fn[ note_id ] );
 		nova.notifications.cancel( note_id );
 		fn[ note_id ] = false;
-	}
-	
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
-	
-	fn.show();
-}
-
-
-// ---------------------------------------------------------------------------------------------- //
-/*	nova_text_prompt
-	
-	Ask the user for a string.
-*/
-// ---------------------------------------------------------------------------------------------- //
-
-function nova_text_prompt( title, body, placeholder, callback )
-{
-	var fn      = nova_text_prompt;
-	var note_id = 'rtfm-prompt';
-	
-	
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
-	/*	show
-	*/
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
-	
-	fn.show = function()
-	{
-		var request                  = new NotificationRequest( note_id );
-		
-		request.type                 = 'input';
-		request.title                = _l( title );
-		request.body                 = _l( body );
-		request.textInputPlaceholder = _l( placeholder );
-		request.actions              = [ _l('_prompt.search'), _l('_prompt.dismiss') ];
-		
-		let promise = nova.notifications.add( request );
-		promise.then( fn.reply, fn.error );
-	}
-	
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
-	/*	reply
-	*/
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
-	
-	fn.reply = function( reply )
-	{
-		if( reply.actionIdx === 1 )
-			return;
-		
-		if( typeof( callback ) !== 'function' )
-			throw new Error( _l('_err.bad_callback') );
-		
-		callback( reply.textInputValue );
-	}
-	
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
-	/*	error
-	*/
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
-	
-	fn.error = function()
-	{
-		rc_log( _l('_err.bad_notify_reply') );
-		nova_notify( _l('_err.error'), _l('_err.bad_notify_reply') );
 	}
 	
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//

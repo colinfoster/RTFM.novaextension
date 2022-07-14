@@ -1,3 +1,8 @@
+## Version 1.1.0
+2022-07-13
+- Update text-prompt dialog to use workspace.showInputPalette instead of NotificationRequest.
+- Updated icon.
+
 ## Version 1.0.2
 2022-06-23
 - Typos. Grrrr.
