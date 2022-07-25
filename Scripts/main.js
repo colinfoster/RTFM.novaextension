@@ -42,17 +42,14 @@ function handle_search( editor )
 				{'placeholder': _l('_prompt.placeholder', syntax['name'] ) },
 				( search_text ) =>
 				{
-					search_text = search_text.trim();
-					
-					if( search_text )
-						do_search( syntax['url_template'], syntax['id'], search_text );
+					do_search( syntax['url_template'], syntax['id'], search_text );
 				}
 			);
 			
 			return;
 		}
 		
-		 do_search( syntax['url_template'], syntax['id'], search_text );
+		do_search( syntax['url_template'], syntax['id'], search_text );
 	}
 	catch( error )
 	{
@@ -76,14 +73,14 @@ function handle_search( editor )
 
 function do_search( url_template, syntax_id, search_text )
 {
-	if( !search_text.length )
+	if( rc_type( search_text ) !== 'string' || !search_text.trim().length )
 		return;
 	
 	// Don't include generic 'syntax' keywords for these types of searches.
 	if( ['text','diff','ini','markdown','shell'].indexOf( syntax_id ) >= 0 )
 		syntax_id = '';
 	
-	var search_url = url_template.replace('%@', search_text )
+	var search_url = url_template.replace('%@', search_text.trim() )
 							.replace('%$', syntax_id );
 	
 	nova.openURL( encodeURI( search_url ), ( success ) =>

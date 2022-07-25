@@ -3,7 +3,7 @@
 	"name":          "RTFM",
 	"organization":  "Run Code Run Inc.",
 	"description":   "RTFM will help you to \"Read The... Flippin' Manual\" entry for a highlighted language keyword/function by quickly directing your browser to lookup the term in your favourite documentation for that language. Unique settings for every syntax in Nova and fully customizable to target any (searchable) API-reference library. To get more details, RTFM!",
-	"version":       "1.1.0",
+	"version":       "1.1.1",
 	"license":       "BSD 3-Clause License",
 	"repository":    "https://github.com/colinfoster/RTFM.novaextension",
 	"funding":       "https://github.com/sponsors/colinfoster",
@@ -14,146 +14,146 @@
 	"commands": {
 		"editor": [
 			{
-				"title": "_command.title",
+				"title":   "_command.title",
 				"command": "rtfm.search",
-				"when": "1"
+				"when":    "1"
 			}
 		]
 	},
 	"config":
 	[
 		{
-			"title": "_config.title",
+			"title":       "_config.title",
 			"description": "_config.description",
-			"type": "section",
+			"type":        "section",
 			"children":
 			[
 				{
-					"key": "rtfm.text_resource",
-					"title": "Plain Text",
-					"type": "enum",
+					"key":   "rtfm.text_resource",
+					"title": "_syntax.text",
+					"type":  "enum",
 					"values":
 					[
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "ddg"
 				},
 				{
-					"key": "rtfm.coffeescript_resource",
-					"title": "CoffeeScript",
-					"type": "enum",
+					"key":   "rtfm.coffeescript_resource",
+					"title": "_syntax.coffeescript",
+					"type":  "enum",
 					"values":
 					[
 						["use-javascript", "_rsrc_name.use-js"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-javascript"
 				},
 				{
-					"key": "rtfm.css_resource",
-					"title": "CSS",
-					"type": "enum",
+					"key":   "rtfm.css_resource",
+					"title": "_syntax.css",
+					"type":  "enum",
 					"values":
 					[
-						["moz-ddg", "_rsrc_name.moz-ddg"],
-						["moz", "_rsrc_name.moz"],
-						["can", "_rsrc_name.can"],
+						["moz-ddg",  "_rsrc_name.moz-ddg"],
+						["moz",      "_rsrc_name.moz"],
+						["can",      "_rsrc_name.can"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "moz-ddg"
 				},
 				{
-					"key": "rtfm.diff_resource",
-					"title": "Diff",
-					"type": "enum",
+					"key":   "rtfm.diff_resource",
+					"title": "_syntax.diff",
+					"type":  "enum",
 					"values":
 					[
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "ddg"
 				},
 				{
-					"key": "rtfm.erb_resource",
-					"title": "ERB",
-					"type": "enum",
+					"key":   "rtfm.erb_resource",
+					"title": "_syntax.erb",
+					"type":  "enum",
 					"values":
 					[
 						["use-html", "_rsrc_name.use-html"],
 						["use-ruby", "_rsrc_name.use-ruby"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-html"
 				},
 				{
-					"key": "rtfm.haml_resource",
-					"title": "Haml",
-					"type": "enum",
+					"key":   "rtfm.haml_resource",
+					"title": "_syntax.haml",
+					"type":  "enum",
 					"values":
 					[
 						["haml-ddg", "_rsrc_name.haml-ddg"],
 						["use-html", "_rsrc_name.use-html"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-html"
 				},
 				{
-					"key": "rtfm.html_resource",
-					"title": "HTML",
-					"type": "enum",
+					"key":   "rtfm.html_resource",
+					"title": "_syntax.html",
+					"type":  "enum",
 					"values":
 					[
-						["moz-ddg", "_rsrc_name.moz-ddg"],
-						["moz", "_rsrc_name.moz"],
-						["hdr-ddg", "_rsrc_name.hdr-ddg"],
-						["w3s-ddg", "_rsrc_name.w3s-ddg"],
+						["moz-ddg",  "_rsrc_name.moz-ddg"],
+						["moz",      "_rsrc_name.moz"],
+						["hdr-ddg",  "_rsrc_name.hdr-ddg"],
+						["w3s-ddg",  "_rsrc_name.w3s-ddg"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "moz-ddg"
 				},
 				{
-					"key": "rtfm.html+erb_resource",
-					"title": "HTML (ERB)",
-					"type": "enum",
+					"key":   "rtfm.html+erb_resource",
+					"title": "_syntax.html+erb",
+					"type":  "enum",
 					"values":
 					[
 						["use-html", "_rsrc_name.use-html"],
@@ -163,384 +163,384 @@
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-html"
 				},
 				{
-					"key": "rtfm.ini_resource",
-					"title": "INI",
-					"type": "enum",
+					"key":   "rtfm.ini_resource",
+					"title": "_syntax.ini",
+					"type":  "enum",
 					"values":
 					[
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "ddg"
 				},
 				{
-					"key": "rtfm.javascript_resource",
-					"type": "enum",
-					"title": "Javascript",
+					"key":   "rtfm.javascript_resource",
+					"type":  "enum",
+					"title": "_syntax.javascript",
 					"values":
 					[
-						["moz-ddg", "_rsrc_name.moz-ddg"],
-						["moz", "_rsrc_name.moz"],
+						["moz-ddg",    "_rsrc_name.moz-ddg"],
+						["moz",        "_rsrc_name.moz"],
 						["jquery-ddg", "_rsrc_name.jquery-ddg"],
 						["highch-ddg", "_rsrc_name.highch-ddg"],
-						["nova-ddg", "_rsrc_name.nova-ddg"],
+						["nova-ddg",   "_rsrc_name.nova-ddg"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
-						["custom_1", "_rsrc_name.custom_1"],
-						["custom_2", "_rsrc_name.custom_2"],
-						["custom_3", "_rsrc_name.custom_3"]
+						["ddg",        "_rsrc_name.ddg"],
+						["goog",       "_rsrc_name.goog"],
+						["custom_1",   "_rsrc_name.custom_1"],
+						["custom_2",   "_rsrc_name.custom_2"],
+						["custom_3",   "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "moz-ddg"
 				},
 				{
-					"key": "rtfm.json_resource",
-					"type": "enum",
-					"title": "JSON",
+					"key":   "rtfm.json_resource",
+					"type":  "enum",
+					"title": "_syntax.json",
 					"values":
 					[
 						["nova-ddg", "_rsrc_name.nova-ddg"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "ddg"
 				},
 				{
-					"key": "rtfm.jsx_resource",
-					"title": "JSX",
-					"type": "enum",
+					"key":   "rtfm.jsx_resource",
+					"title": "_syntax.jsx",
+					"type":  "enum",
 					"values":
 					[
-						["react-ddg", "_rsrc_name.react-ddg"],
+						["react-ddg",      "_rsrc_name.react-ddg"],
 						["use-javascript", "_rsrc_name.use-js"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-javascript"
 				},
 				{
-					"key": "rtfm.less_resource",
-					"title": "Less",
-					"type": "enum",
+					"key":   "rtfm.less_resource",
+					"title": "_syntax.less",
+					"type":  "enum",
 					"values":
 					[
-						["use-css", "_rsrc_name.use-css"],
+						["use-css",  "_rsrc_name.use-css"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-css"
 				},
 				{
-					"key": "rtfm.lua_resource",
-					"type": "enum",
-					"title": "Lua",
+					"key":   "rtfm.lua_resource",
+					"type":  "enum",
+					"title": "_syntax.lua",
 					"values":
 					[
 						["lua54-ddg", "_rsrc_name.lua54-ddg"],
 						["lua40-ddg", "_rsrc_name.lua40-ddg"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "lua54-ddg"
 				},
 				{
-					"key": "rtfm.markdown_resource",
-					"title": "Markdown",
-					"type": "enum",
+					"key":   "rtfm.markdown_resource",
+					"title": "_syntax.markdown",
+					"type":  "enum",
 					"values":
 					[
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "ddg"
 				},
 				{
-					"key": "rtfm.perl_resource",
-					"type": "enum",
-					"title": "Perl",
+					"key":   "rtfm.perl_resource",
+					"type":  "enum",
+					"title": "_syntax.perl",
 					"values":
 					[
 						["perl-ddg", "_rsrc_name.perl-ddg"],
-						["perl", "_rsrc_name.perl"],
+						["perl",     "_rsrc_name.perl"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "perl"
 				},
 				{
-					"key": "rtfm.php_resource",
-					"type": "enum",
-					"title": "PHP",
+					"key":   "rtfm.php_resource",
+					"type":  "enum",
+					"title": "_syntax.php",
 					"values":
 					[
-						["php", "_rsrc_name.php"],
+						["php",      "_rsrc_name.php"],
 						["use-html", "_rsrc_name.use-html"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "php"
 				},
 				{
-					"key": "rtfm.python_resource",
-					"type": "enum",
-					"title": "Python",
+					"key":   "rtfm.python_resource",
+					"type":  "enum",
+					"title": "_syntax.python",
 					"values":
 					[
 						["python-ddg", "_rsrc_name.python-ddg"],
-						["python", "_rsrc_name.python"],
-						["w3s-ddg", "_rsrc_name.w3s-ddg"],
+						["python",     "_rsrc_name.python"],
+						["w3s-ddg",    "_rsrc_name.w3s-ddg"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "python-ddg"
 				},
 				{
-					"key": "rtfm.ruby_resource",
-					"type": "enum",
-					"title": "Ruby",
+					"key":   "rtfm.ruby_resource",
+					"type":  "enum",
+					"title": "_syntax.ruby",
 					"values":
 					[
 						["ruby-ddg", "_rsrc_name.ruby-ddg"],
-						["ruby", "_rsrc_name.ruby"],
+						["ruby",     "_rsrc_name.ruby"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "ruby-ddg"
 				},
 				{
-					"key": "rtfm.sass_resource",
-					"title": "Sass",
-					"type": "enum",
+					"key":   "rtfm.sass_resource",
+					"title": "_syntax.sass",
+					"type":  "enum",
 					"values":
 					[
 						["sass-ddg", "_rsrc_name.sass-ddg"],
-						["use-css", "_rsrc_name.use-css"],
+						["use-css",  "_rsrc_name.use-css"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "sass-ddg"
 				},
 				{
-					"key": "rtfm.scss_resource",
-					"title": "SCSS",
-					"type": "enum",
+					"key":   "rtfm.scss_resource",
+					"title": "_syntax.scss",
+					"type":  "enum",
 					"values":
 					[
 						["sass-ddg", "_rsrc_name.sass-ddg"],
-						["use-css", "_rsrc_name.use-css"],
+						["use-css",  "_rsrc_name.use-css"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-css"
 				},
 				{
-					"key": "rtfm.shell_resource",
-					"title": "Shell Script",
-					"type": "enum",
+					"key":   "rtfm.shell_resource",
+					"title": "_syntax.shell",
+					"type":  "enum",
 					"values":
 					[
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "ddg"
 				},
 				{
-					"key": "rtfm.smarty_resource",
-					"title": "Smarty",
-					"type": "enum",
+					"key":   "rtfm.smarty_resource",
+					"title": "_syntax.smarty",
+					"type":  "enum",
 					"values":
 					[
 						["smarty-ddg", "_rsrc_name.smarty-ddg"],
-						["smarty", "_rsrc_name.smarty"],
-						["use-html", "_rsrc_name.use-html"],
-						["use-php", "_rsrc_name.use-php"],
+						["smarty",     "_rsrc_name.smarty"],
+						["use-html",   "_rsrc_name.use-html"],
+						["use-php",    "_rsrc_name.use-php"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-php"
 				},
 				{
-					"key": "rtfm.sql_resource",
-					"title": "SQL",
-					"type": "enum",
+					"key":   "rtfm.sql_resource",
+					"title": "_syntax.sql",
+					"type":  "enum",
 					"values":
 					[
-						["mar-ddg", "_rsrc_name.mar-ddg"],
-						["mar", "_rsrc_name.mar"],
-						["mys-ddg", "_rsrc_name.mys-ddg"],
-						["mys", "_rsrc_name.mys"],
+						["mar-ddg",  "_rsrc_name.mar-ddg"],
+						["mar",      "_rsrc_name.mar"],
+						["mys-ddg",  "_rsrc_name.mys-ddg"],
+						["mys",      "_rsrc_name.mys"],
 						["mys5-ddg", "_rsrc_name.mys5-ddg"],
-						["mys5", "_rsrc_name.mys5"],
-						["orcl", "_rsrc_name.orcl"],
-						["pgs-ddg", "_rsrc_name.pgs-ddg"],
-						["pgs", "_rsrc_name.pgs"],
+						["mys5",     "_rsrc_name.mys5"],
+						["orcl",     "_rsrc_name.orcl"],
+						["pgs-ddg",  "_rsrc_name.pgs-ddg"],
+						["pgs",      "_rsrc_name.pgs"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "mys5-ddg"
 				},
 				{
-					"key": "rtfm.tsx_resource",
-					"title": "TSX",
-					"type": "enum",
+					"key":   "rtfm.tsx_resource",
+					"title": "_syntax.tsx",
+					"type":  "enum",
 					"values":
 					[
-						["typs-ddg", "_rsrc_name.typs-ddg"],
-						["react-ddg", "_rsrc_name.react-ddg"],
+						["typs-ddg",       "_rsrc_name.typs-ddg"],
+						["react-ddg",      "_rsrc_name.react-ddg"],
 						["use-javascript", "_rsrc_name.use-js"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-javascript"
 				},
 				{
-					"key": "rtfm.typescript_resource",
-					"title": "TypeScript",
-					"type": "enum",
+					"key":   "rtfm.typescript_resource",
+					"title": "_syntax.typescript",
+					"type":  "enum",
 					"values":
 					[
-						["typs-ddg", "_rsrc_name.typs-ddg"],
+						["typs-ddg",       "_rsrc_name.typs-ddg"],
 						["use-javascript", "_rsrc_name.use-js"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "use-javascript"
 				},
 				{
-					"key": "rtfm.vue_resource",
-					"title": "Vue",
-					"type": "enum",
+					"key":   "rtfm.vue_resource",
+					"title": "_syntax.vue",
+					"type":  "enum",
 					"values":
 					[
-						["vue", "_rsrc_name.vue"],
+						["vue",            "_rsrc_name.vue"],
 						["use-javascript", "_rsrc_name.use-js"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "vue"
 				},
 				{
-					"key": "rtfm.xml_resource",
-					"title": "XML",
-					"type": "enum",
+					"key":   "rtfm.xml_resource",
+					"title": "_syntax.xml",
+					"type":  "enum",
 					"values":
 					[
-						["w3s-ddg", "_rsrc_name.w3s-ddg"],
+						["w3s-ddg",  "_rsrc_name.w3s-ddg"],
 						"-",
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "w3s-ddg"
 				},
 				{
-					"key": "rtfm.yaml_resource",
-					"title": "YAML",
-					"type": "enum",
+					"key":   "rtfm.yaml_resource",
+					"title": "_syntax.yaml",
+					"type":  "enum",
 					"values":
 					[
-						["ddg", "_rsrc_name.ddg"],
-						["goog", "_rsrc_name.goog"],
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
 						["custom_1", "_rsrc_name.custom_1"],
 						["custom_2", "_rsrc_name.custom_2"],
 						["custom_3", "_rsrc_name.custom_3"]
 					],
-					"radio": false,
+					"radio":   false,
 					"default": "ddg"
 				}
 			]
@@ -548,25 +548,25 @@
 		{
 			"title": "_config.custom_title",
 			"description": "_config.custom_description",
-			"type": "section",
+			"type":  "section",
 			"children":
 			[
 				{
-					"key": "rtfm.custom_1_resource",
+					"key":   "rtfm.custom_1_resource",
 					"title": "_rsrc_name.custom_1",
-					"type": "string",
+					"type":  "string",
 					"placeholder": "_custom_rsrc.placeholder"
 				},
 				{
-					"key": "rtfm.custom_2_resource",
+					"key":   "rtfm.custom_2_resource",
 					"title": "_rsrc_name.custom_2",
-					"type": "string",
+					"type":  "string",
 					"placeholder": "_custom_rsrc.placeholder"
 				},
 				{
-					"key": "rtfm.custom_3_resource",
+					"key":   "rtfm.custom_3_resource",
 					"title": "_rsrc_name.custom_3",
-					"type": "string",
+					"type":  "string",
 					"placeholder": "_custom_rsrc.placeholder"
 				}
 			]
