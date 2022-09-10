@@ -3,7 +3,7 @@
 	"name":          "RTFM",
 	"organization":  "Run Code Run Inc.",
 	"description":   "RTFM will help you to \"Read The... Flippin' Manual\" entry for a highlighted language keyword/function by quickly directing your browser to lookup the term in your favourite documentation for that language. Unique settings for every syntax in Nova and fully customizable to target any (searchable) API-reference library. To get more details, RTFM!",
-	"version":       "1.1.1",
+	"version":       "1.2.0",
 	"license":       "BSD 3-Clause License",
 	"repository":    "https://github.com/colinfoster/RTFM.novaextension",
 	"funding":       "https://github.com/sponsors/colinfoster",
@@ -312,6 +312,7 @@
 					"values":
 					[
 						["php",      "_rsrc_name.php"],
+						["wp-ddg",   "_rsrc_name.wp-ddg"],
 						["use-html", "_rsrc_name.use-html"],
 						"-",
 						["ddg",      "_rsrc_name.ddg"],

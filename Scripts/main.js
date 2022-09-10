@@ -76,8 +76,8 @@ function do_search( url_template, syntax_id, search_text )
 	if( rc_type( search_text ) !== 'string' || !search_text.trim().length )
 		return;
 	
-	// Don't include generic 'syntax' keywords for these types of searches.
-	if( ['text','diff','ini','markdown','shell'].indexOf( syntax_id ) >= 0 )
+	// Don't include generic syntax keywords for these types of searches.
+	if( ['text','diff','json','ini','markdown','shell'].indexOf( syntax_id ) >= 0 )
 		syntax_id = '';
 	
 	var search_url = url_template.replace('%@', search_text.trim() )
@@ -306,7 +306,7 @@ function _l( key )
 	
 	// Arguments are replaced in reverse order so we replace %@11 (if it exists) before %@1.
 	for( var i = arguments.length - 1; i > 0; i-- )
-		str = str.replace('%@'+i, arguments[ i ] );
+		str = str.replace('%@'+i, nova.localize( arguments[ i ] ) );
 	
 	return str;
 }
@@ -331,7 +331,7 @@ function rc_type( o )
 
 
 // ---------------------------------------------------------------------------------------------- //
-/*	rc_log - v2.1.0 2022-06-23
+/*	rc_log - v2.1.1 2022-08-11
 */
 // ---------------------------------------------------------------------------------------------- //
 
@@ -339,9 +339,11 @@ function rc_log()
 {
 	rc_log.id++;
 	
-	var log_type_and_value= function( value, prefix )
+	var log_type_and_value = function( type, value, prefix )
 	{
-		console.log( prefix + rc_type( value ) + " (" + value.toString() + ")");
+		value = ['null','undefined'].indexOf( type ) === -1 ? " (" + value.toString() + ")" : '';
+		
+		console.log( prefix + type + value );
 	};
 	
 	try{ var caller_name = arguments.callee.caller.name ? arguments.callee.caller.name : 'anon'; }
@@ -358,13 +360,13 @@ function rc_log()
 		{
 			var keys = Object.keys( o );
 			if( !keys.length )
-				log_type_and_value( o, "- " );
+				log_type_and_value( type, o, "- " );
 			else
 			{
 				console.log('{');
 				keys.forEach( function( key )
 				{
-					log_type_and_value( o[ key ], '   "' + key + '": ' );
+					log_type_and_value( rc_type( o[ key ] ), o[ key ], '   "' + key + '": ' );
 				} );
 				console.log('}');
 			}
@@ -372,10 +374,11 @@ function rc_log()
 		else if( type === 'error')
 			console.log( "X Line " + o.line + ":" + o.column + " " + o.message );
 		else
-			log_type_and_value( o, "- " );
+			log_type_and_value( type, o, "- " );
 	}
 }
 rc_log.id = 0;
-dbg = rc_log;
+dbg = rc_log;	// To differentiate between temporary and permanent logging.
+
 
 // ---------------------------------------------------------------------------------------------- //

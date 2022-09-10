@@ -1,3 +1,10 @@
+## Version 1.2.0
+2022-09-09
+- Localize for French and Spanish.
+- Add Wordpress API to PHP options.
+- Added JSON to the list of "generic" syntaxes that don't include their name in searches when the search URL uses %$.
+- Minor change to rc_log().
+
 ## Version 1.1.1
 2022-07-25
 - Fix: 'undefined is not an object' error reported to the console when showInputPalette() was dismissed (clicking away or hitting escape) instead of entering text.
