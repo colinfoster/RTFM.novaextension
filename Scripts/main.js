@@ -34,6 +34,7 @@ function handle_search( editor )
 		var syntax      = get_syntax_profile( editor.document.syntax );
 		var search_text = editor.selectedText.trim();
 		
+		
 		// If the user didn't have text highlighted in the editor, ask them for a string.
 		if( !search_text )
 		{
@@ -77,7 +78,7 @@ function do_search( url_template, syntax_id, search_text )
 		return;
 	
 	// Don't include generic syntax keywords for these types of searches.
-	if( ['text','diff','json','ini','markdown','shell'].indexOf( syntax_id ) >= 0 )
+	if( ['text','diff','ini','json','markdown','shell'].indexOf( syntax_id ) >= 0 )
 		syntax_id = '';
 	
 	var search_url = url_template.replace('%@', search_text.trim() )

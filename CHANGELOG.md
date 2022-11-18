@@ -1,3 +1,10 @@
+## Version 2.0.0
+2022-11-08
+- THIS RELEASE IS FOR NOVA 10.1+. (Nova 10.0 had a bug that could cause problems for this version of the extension. Syntaxes have also been changed to match those in v10+.)
+- Removed syntaxes no longer supported directly in the Syntax menu in Nova 10: CoffeeScript, ERB, HAML, JSX, Smarty, Vue.
+- Added support for new syntaxes in the Syntax menu in Nova 10: HTML+EJS, Regex, Tree Sitter
+- JSX-specific search options moved to Javascript syntax.
+
 ## Version 1.2.0
 2022-09-09
 - Localize for French and Spanish.

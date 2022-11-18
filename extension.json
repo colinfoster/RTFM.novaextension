@@ -1,9 +1,9 @@
 {
 	"identifier":    "run.runcode.RTFM",
-	"name":          "RTFM",
+	"name":          "RTFM - Documentation Lookup",
 	"organization":  "Run Code Run Inc.",
 	"description":   "RTFM will help you to \"Read The... Flippin' Manual\" entry for a highlighted language keyword/function by quickly directing your browser to lookup the term in your favourite documentation for that language. Unique settings for every syntax in Nova and fully customizable to target any (searchable) API-reference library. To get more details, RTFM!",
-	"version":       "1.2.0",
+	"version":       "2.0.0",
 	"license":       "BSD 3-Clause License",
 	"repository":    "https://github.com/colinfoster/RTFM.novaextension",
 	"funding":       "https://github.com/sponsors/colinfoster",
@@ -44,23 +44,6 @@
 					"default": "ddg"
 				},
 				{
-					"key":   "rtfm.coffeescript_resource",
-					"title": "_syntax.coffeescript",
-					"type":  "enum",
-					"values":
-					[
-						["use-javascript", "_rsrc_name.use-js"],
-						"-",
-						["ddg",      "_rsrc_name.ddg"],
-						["goog",     "_rsrc_name.goog"],
-						["custom_1", "_rsrc_name.custom_1"],
-						["custom_2", "_rsrc_name.custom_2"],
-						["custom_3", "_rsrc_name.custom_3"]
-					],
-					"radio":   false,
-					"default": "use-javascript"
-				},
-				{
 					"key":   "rtfm.css_resource",
 					"title": "_syntax.css",
 					"type":  "enum",
@@ -95,42 +78,6 @@
 					"default": "ddg"
 				},
 				{
-					"key":   "rtfm.erb_resource",
-					"title": "_syntax.erb",
-					"type":  "enum",
-					"values":
-					[
-						["use-html", "_rsrc_name.use-html"],
-						["use-ruby", "_rsrc_name.use-ruby"],
-						"-",
-						["ddg",      "_rsrc_name.ddg"],
-						["goog",     "_rsrc_name.goog"],
-						["custom_1", "_rsrc_name.custom_1"],
-						["custom_2", "_rsrc_name.custom_2"],
-						["custom_3", "_rsrc_name.custom_3"]
-					],
-					"radio":   false,
-					"default": "use-html"
-				},
-				{
-					"key":   "rtfm.haml_resource",
-					"title": "_syntax.haml",
-					"type":  "enum",
-					"values":
-					[
-						["haml-ddg", "_rsrc_name.haml-ddg"],
-						["use-html", "_rsrc_name.use-html"],
-						"-",
-						["ddg",      "_rsrc_name.ddg"],
-						["goog",     "_rsrc_name.goog"],
-						["custom_1", "_rsrc_name.custom_1"],
-						["custom_2", "_rsrc_name.custom_2"],
-						["custom_3", "_rsrc_name.custom_3"]
-					],
-					"radio":   false,
-					"default": "use-html"
-				},
-				{
 					"key":   "rtfm.html_resource",
 					"title": "_syntax.html",
 					"type":  "enum",
@@ -149,6 +96,22 @@
 					],
 					"radio":   false,
 					"default": "moz-ddg"
+				},
+				{
+					"key":   "rtfm.html+ejs_resource",
+					"title": "_syntax.html+ejs",
+					"type":  "enum",
+					"values":
+					[
+						["use-html", "_rsrc_name.use-html"],
+						["use-javascript", "_rsrc_name.use-js"],
+						"-",
+						["custom_1", "_rsrc_name.custom_1"],
+						["custom_2", "_rsrc_name.custom_2"],
+						["custom_3", "_rsrc_name.custom_3"]
+					],
+					"radio":   false,
+					"default": "use-html"
 				},
 				{
 					"key":   "rtfm.html+erb_resource",
@@ -192,6 +155,7 @@
 						["jquery-ddg", "_rsrc_name.jquery-ddg"],
 						["highch-ddg", "_rsrc_name.highch-ddg"],
 						["nova-ddg",   "_rsrc_name.nova-ddg"],
+						["react-ddg",   "_rsrc_name.react-ddg"],
 						"-",
 						["ddg",        "_rsrc_name.ddg"],
 						["goog",       "_rsrc_name.goog"],
@@ -218,24 +182,6 @@
 					],
 					"radio":   false,
 					"default": "ddg"
-				},
-				{
-					"key":   "rtfm.jsx_resource",
-					"title": "_syntax.jsx",
-					"type":  "enum",
-					"values":
-					[
-						["react-ddg",      "_rsrc_name.react-ddg"],
-						["use-javascript", "_rsrc_name.use-js"],
-						"-",
-						["ddg",      "_rsrc_name.ddg"],
-						["goog",     "_rsrc_name.goog"],
-						["custom_1", "_rsrc_name.custom_1"],
-						["custom_2", "_rsrc_name.custom_2"],
-						["custom_3", "_rsrc_name.custom_3"]
-					],
-					"radio":   false,
-					"default": "use-javascript"
 				},
 				{
 					"key":   "rtfm.less_resource",
@@ -344,6 +290,24 @@
 					"default": "python-ddg"
 				},
 				{
+					"key":   "rtfm.regex_resource",
+					"type":  "enum",
+					"title": "_syntax.regex",
+					"values":
+					[
+						["moz",      "_rsrc_name.moz_regex"],
+						["regex101", "_rsrc_name.regex101"],
+						"-",
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
+						["custom_1", "_rsrc_name.custom_1"],
+						["custom_2", "_rsrc_name.custom_2"],
+						["custom_3", "_rsrc_name.custom_3"]
+					],
+					"radio":   false,
+					"default": "moz"
+				},
+				{
 					"key":   "rtfm.ruby_resource",
 					"type":  "enum",
 					"title": "_syntax.ruby",
@@ -413,26 +377,6 @@
 					"default": "ddg"
 				},
 				{
-					"key":   "rtfm.smarty_resource",
-					"title": "_syntax.smarty",
-					"type":  "enum",
-					"values":
-					[
-						["smarty-ddg", "_rsrc_name.smarty-ddg"],
-						["smarty",     "_rsrc_name.smarty"],
-						["use-html",   "_rsrc_name.use-html"],
-						["use-php",    "_rsrc_name.use-php"],
-						"-",
-						["ddg",      "_rsrc_name.ddg"],
-						["goog",     "_rsrc_name.goog"],
-						["custom_1", "_rsrc_name.custom_1"],
-						["custom_2", "_rsrc_name.custom_2"],
-						["custom_3", "_rsrc_name.custom_3"]
-					],
-					"radio":   false,
-					"default": "use-php"
-				},
-				{
 					"key":   "rtfm.sql_resource",
 					"title": "_syntax.sql",
 					"type":  "enum",
@@ -456,6 +400,23 @@
 					],
 					"radio":   false,
 					"default": "mys5-ddg"
+				},
+				{
+					"key":   "rtfm.tsq_resource",
+					"title": "_syntax.tsq",
+					"type":  "enum",
+					"values":
+					[
+						["treesitter-ddg", "_rsrc_name.treesitter-ddg"],
+						"-",
+						["ddg",      "_rsrc_name.ddg"],
+						["goog",     "_rsrc_name.goog"],
+						["custom_1", "_rsrc_name.custom_1"],
+						["custom_2", "_rsrc_name.custom_2"],
+						["custom_3", "_rsrc_name.custom_3"]
+					],
+					"radio":   false,
+					"default": "treesitter-ddg"
 				},
 				{
 					"key":   "rtfm.tsx_resource",
@@ -493,24 +454,6 @@
 					],
 					"radio":   false,
 					"default": "use-javascript"
-				},
-				{
-					"key":   "rtfm.vue_resource",
-					"title": "_syntax.vue",
-					"type":  "enum",
-					"values":
-					[
-						["vue",            "_rsrc_name.vue"],
-						["use-javascript", "_rsrc_name.use-js"],
-						"-",
-						["ddg",      "_rsrc_name.ddg"],
-						["goog",     "_rsrc_name.goog"],
-						["custom_1", "_rsrc_name.custom_1"],
-						["custom_2", "_rsrc_name.custom_2"],
-						["custom_3", "_rsrc_name.custom_3"]
-					],
-					"radio":   false,
-					"default": "vue"
 				},
 				{
 					"key":   "rtfm.xml_resource",
